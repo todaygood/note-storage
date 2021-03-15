@@ -13,7 +13,7 @@ For applications requiring high performance, which manage their own replication,
 使用容器化块存储OpenEBS在K3s中实现持久化存储
 https://blog.csdn.net/qq_42206813/article/details/106358156
 
-https://cloud.tencent.com/developer/article/1548227
+[CAS存储现状](https://cloud.tencent.com/developer/article/1548227)
 
 
 https://blog.csdn.net/rancherlabs/article/details/71080450
@@ -36,5 +36,26 @@ https://www.percona.com/blog/2020/11/12/measuring-openebs-local-volume-performan
 
 性能对比：http://blog.itpub.net/69950566/viewspace-2668154/
 　
- 
 
+[pvc mount as block device testcase](https://cloud.yandex.com/docs/managed-kubernetes/operations/volumes/mode-block)
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod
+spec:
+  containers:
+  - name: app
+    image: ubuntu
+    command: ["/bin/sh"]
+    args: ["-xc", "/bin/dd if=/dev/block of=/dev/null bs=1K count=10; /bin/sleep 3600"]
+    volumeDevices:
+    - devicePath: /dev/block
+      name: persistent-storage
+  volumes:
+  - name: persistent-storage
+    persistentVolumeClaim:
+      claimName:  pvc-block
+
+
+[volume expand testcase](https://cloud.yandex.com/docs/managed-kubernetes/operations/volumes/volume-expansion)
