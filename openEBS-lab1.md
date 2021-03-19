@@ -18,7 +18,6 @@ https://blog.csdn.net/qq_42206813/article/details/106358156
 
 https://blog.csdn.net/rancherlabs/article/details/71080450
 
-https://tswblog.com/article/cloud/longhorn/
 
 
 ## openEBS 
