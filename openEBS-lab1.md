@@ -38,23 +38,7 @@ https://www.percona.com/blog/2020/11/12/measuring-openebs-local-volume-performan
 
 [pvc mount as block device testcase](https://cloud.yandex.com/docs/managed-kubernetes/operations/volumes/mode-block)
 
-apiVersion: v1
-kind: Pod
-metadata:
-  name: pod
-spec:
-  containers:
-  - name: app
-    image: ubuntu
-    command: ["/bin/sh"]
-    args: ["-xc", "/bin/dd if=/dev/block of=/dev/null bs=1K count=10; /bin/sleep 3600"]
-    volumeDevices:
-    - devicePath: /dev/block
-      name: persistent-storage
-  volumes:
-  - name: persistent-storage
-    persistentVolumeClaim:
-      claimName:  pvc-block
+
 
 
 [volume expand testcase](https://cloud.yandex.com/docs/managed-kubernetes/operations/volumes/volume-expansion)
